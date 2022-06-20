@@ -14,7 +14,7 @@ Some data needed by the program can be passed through environmental tables (e.g.
 
 
 ## Compiling and running
-Download the source code, then open CMD or Bash on the source code's folder, then run
+Download the source code, then open your preferred terminal on the source code's folder, then run
 ```bash
 npm install
 ```

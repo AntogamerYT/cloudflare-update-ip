@@ -12,7 +12,7 @@ import { default as lookForIpChange } from './actions/lookForIpChange.js'
 // @ts-expect-error
 export const cf = Cloudflare({
     email: process.env.CFMAIL,
-    key: process.env.CFAPIKEY
+    key: process.env.CFAPI
 })
 
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
                                         Cloudflare IP Updater
     `)
     logger.info('Application Initialized')
-    if(!process.env.CFAPIKEY) throw new TypeError('API Key must be provided')
+    if(!process.env.CFAPI) throw new TypeError('API Key must be provided')
     logger.debug('API Key loaded successfully')
     if(!process.env.CFMAIL) throw new TypeError('Cloudfare Mail must be provided')
     logger.debug('Mail loaded successfully')

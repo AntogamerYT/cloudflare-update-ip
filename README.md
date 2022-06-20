@@ -11,3 +11,20 @@ Some data needed by the program can be passed through environmental tables (e.g.
 | ZONE            | Your Cloudfare's Zone ID                                                   |
 | DOMAIN          | The domain you want to change the DNS records of                           |
 | SECONDS         | Optional. Interval beetwen IP Checks. A prompt is shown if this is missing |
+
+
+## Compiling and running
+Download the source code, then open CMD or Bash on the source code's folder, then run
+```bash
+npm install
+```
+
+Once completed, run
+```bash
+npx tsc
+```
+to compile, and
+```bash
+node ./dist
+```
+to run the program

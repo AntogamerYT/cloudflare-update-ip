@@ -21,14 +21,14 @@ async function main() {
                                         Cloudflare IP Updater
     `)
     logger.info('Application Initialized')
-    /*if(typeof process.env.CFAPIKEY !== 'string') throw new TypeError('API Key must be a string')
+    if(typeof process.env.CFAPIKEY !== 'string') throw new TypeError('API Key must be a string')
     logger.debug('API Key loaded successfully')
     if(typeof process.env.CFMAIL !== 'string') throw new TypeError('Cloudfare Mail must be a string')
     logger.debug('Mail loaded successfully')
     if(typeof process.env.ZONE !== 'string') throw new TypeError('Zone Id must be a string')
     logger.debug('Zone Id loaded successfully')
     if(typeof process.env.DOMAIN !== 'string') throw new TypeError('Domain must be a string')
-    logger.debug('Domain loaded successfully')*/
+    logger.debug('Domain loaded successfully')
 
     let seconds = parseInt(process.env.SECONDS)
     if(isNaN(seconds)) {

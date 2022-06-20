@@ -2,14 +2,14 @@ import * as Cloudflare from 'cloudflare'
 import * as dotenv from 'dotenv'
 import * as prompt from 'prompt'
 import * as fs from 'fs'
-dotenv.config()
+dotenv.config({ path: process.cwd() + '/.env' })
 
 import * as logger from './utils/logger.js'
 import { default as getIp } from './actions/getIp.js'
 import { default as getLocalIp } from './actions/getLocalIp.js'
 import { default as lookForIpChange } from './actions/lookForIpChange.js'
 
-//@ts-expect-error
+// @ts-expect-error
 export const cf = Cloudflare({
     email: process.env.CFMAIL,
     key: process.env.CFAPIKEY
@@ -23,7 +23,7 @@ async function main() {
                                         Cloudflare IP Updater
     `)
     logger.info('Application Initialized')
-    if(!process.env.CFAPI) throw new TypeError('API Key must be provided')
+    if(!process.env.CFAPIKEY) throw new TypeError('API Key must be provided')
     logger.debug('API Key loaded successfully')
     if(!process.env.CFMAIL) throw new TypeError('Cloudfare Mail must be provided')
     logger.debug('Mail loaded successfully')

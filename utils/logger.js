@@ -1,30 +1,22 @@
 import chalk from 'chalk'
 
 
-
-
-const warning = async (text) => {
-    console.log(chalk.yellow(text))
-}
-const error = async (text) => {
-    console.log(chalk.red(text))
-}
-const success = async (text) => {
-    console.log(chalk.green(text))
-}
-const info = async (text) => {
-    console.log(chalk.blue(text))
-}
-const debug = async (text) => {
-    console.log(chalk.gray(text))
+export const warning = (text) => {
+    console.log(chalk.yellow(`[!] ${text}`))
 }
 
-const logger = {
-    warning,
-    error,
-    success,
-    info,
-    debug
+export const error = (text) => {
+    console.log(chalk.red(`[!] ${text}`))
 }
 
-export default logger
+export const success = (text) => {
+    console.log(chalk.green(`[✓] ${text}`))
+}
+
+export const info = (text) => {
+    console.log(chalk.blue(`[i] ${text}`))
+}
+
+export const debug = (text) => {
+    console.log(chalk.gray(`[i] ${text}`))
+}

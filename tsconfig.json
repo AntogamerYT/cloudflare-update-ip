@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "module": "commonjs",
+      "target": "ES2015",
+      "lib": ["esnext"],
+      "allowSyntheticDefaultImports": true,
+      "noUnusedLocals": true,
+      "allowUnreachableCode": false,
+      "strict": true,
+      "alwaysStrict": true,
+      "skipLibCheck": true,
+      "declaration": true,
+      "incremental": true,
+      "allowUnusedLabels": false,
+      "noFallthroughCasesInSwitch": true,
+      "noUnusedParameters": true,
+      "sourceMap": true,
+      "declarationMap": true,
+      "removeComments": false,
+      "strictNullChecks": true,
+      "preserveConstEnums": true,
+      "exactOptionalPropertyTypes": true
+    },
+    "include": [
+      "./src/**/*",
+    ],
+    "exclude": [
+      "./node_modules",
+    ],
+}

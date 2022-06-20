@@ -3,7 +3,7 @@ Are you hosting a homeserver? Are you worried about dynamic IPs? Well, you don't
 (WIP)
 
 ## Environmental variables
-Some data needed by the programme can be passed through environmental tables (e.g. with .env file)
+Some data needed by the program can be passed through environmental tables (e.g. with .env file)
 | Variable's Name | Description of variable's value                                            |
 |-----------------|----------------------------------------------------------------------------|
 | CFMAIL          | Your Cloudfare's account e-mail                                            |

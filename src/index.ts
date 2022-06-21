@@ -25,7 +25,7 @@ async function main() {
     `)
     if(!process.env.VERBOSITY || !verbosityLevels.includes(process.env.VERBOSITY)) {
         process.env.VERBOSITY = 'default'
-        logger.info('Verbosity level invalid or missing, defaulting to "default"', 'default')
+        logger.debug('Verbosity level invalid or missing, defaulting to "default"', 'default')
     }
     logger.info('Application Initialized', 'none')
     if(!process.env.CFAPI) throw new TypeError('API Key must be provided')

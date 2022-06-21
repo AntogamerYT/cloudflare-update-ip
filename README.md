@@ -6,9 +6,9 @@ Are you hosting a homeserver? Are you worried about dynamic IPs? Well, you don't
 Some data needed by the program can be passed through environmental tables (e.g. with .env file)
 | Variable's Name | Description of variable's value                                            |
 |-----------------|----------------------------------------------------------------------------|
-| CFMAIL          | Your Cloudfare's account e-mail                                            |
-| CFAPI           | Your Cloudfare's API Key                                                   |
-| ZONE            | Your Cloudfare's Zone ID                                                   |
+| CFMAIL          | Your Cloudflare's account e-mail                                            |
+| CFAPI           | Your Cloudflare's API Key                                                   |
+| ZONE            | Your Cloudflare's Zone ID                                                   |
 | DOMAIN          | The domain you want to change the DNS records of                           |
 | SECONDS         | Optional. Interval beetwen IP Checks. A prompt is shown if this is missing |
 | VERBOSITY       | Optional. [Verbosity level](#verbosity-levels). Defaults to `default`

@@ -7,8 +7,9 @@ import { cf } from '../index.js'
 export default async(zone: string, ip: string) => {
     const dnsRecords = await cf.dnsRecords.browse(zone) as any
     const recordid = dnsRecords.result.filter((record: any) => record.name === process.env.DOMAIN)[0].id
+    logger.debug('Got Record ID, running request...', 'debug')
     try {
-        await axios({
+        const res = await axios({
             method: 'PUT',
             url: `https://api.cloudflare.com/client/v4/zones/${zone}/dns_records/${recordid}`,
             data: {
@@ -26,8 +27,10 @@ export default async(zone: string, ip: string) => {
                 'Content-type': 'application/json',
             },
         })
-        logger.success(`Record's IP changed to ${ip}`)
+        logger.debug(`Received status of ${res.status}: ${res.statusText}`, 'debug')
+        logger.success(`Record's IP changed to ${ip}`, 'default')
     } catch (error) {
-        logger.error('There was an error while changing the IP')
+        logger.error('There was an error while changing the IP', 'errors')
+        logger.debug(`Encountered error: ${error}`, 'debug')
     }
 }

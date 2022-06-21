@@ -5,8 +5,6 @@ import * as fs from 'fs'
 dotenv.config()
 
 import * as logger from './utils/logger.js'
-import { default as getIp } from './actions/getIp.js'
-import { default as getLocalIp } from './actions/getLocalIp.js'
 import { default as lookForIpChange } from './actions/lookForIpChange.js'
 
 //@ts-expect-error
@@ -15,6 +13,9 @@ export const cf = Cloudflare({
     key: process.env.CFAPIKEY
 })
 
+export const verbosityLevels = ['none', 'errors', 'default', 'detailed', 'debug']
+
+
 async function main() {
     const ascii = fs.readFileSync('./ascii.txt').toString()
     
@@ -22,25 +23,24 @@ async function main() {
     console.log(`${ascii}
                                         Cloudflare IP Updater
     `)
-    logger.info('Application Initialized')
+    if(!process.env.VERBOSITY || !verbosityLevels.includes(process.env.VERBOSITY)) throw new TypeError(`Verbosity must be one of: ${verbosityLevels.join(', ')}`)
+    logger.info('Application Initialized', 'none')
     if(!process.env.CFAPI) throw new TypeError('API Key must be provided')
-    logger.debug('API Key loaded successfully')
+    logger.debug('API Key loaded successfully', 'none')
     if(!process.env.CFMAIL) throw new TypeError('Cloudfare Mail must be provided')
-    logger.debug('Mail loaded successfully')
+    logger.debug('Mail loaded successfully', 'none')
     if(!process.env.ZONE) throw new TypeError('Zone Id must be provided')
-    logger.debug('Zone Id loaded successfully')
+    logger.debug('Zone Id loaded successfully', 'none')
     if(!process.env.DOMAIN) throw new TypeError('Domain must be provided')
-    logger.debug('Domain loaded successfully')
+    logger.debug('Domain loaded successfully', 'none')
 
     let seconds = parseInt(process.env.SECONDS ?? '')
     if(isNaN(seconds)) {
-        logger.debug('SECONDS environment variable is invalid or missing, showing prompt')
+        logger.debug('SECONDS environment variable is invalid or missing, showing prompt', 'debug')
         seconds = await promptSeconds()
     }
 
-    logger.info(`Checking for IP change every ${seconds} seconds`)
-    logger.info('Cloudflare\'s IP: ' + (await getIp(process.env.ZONE)))
-    logger.info('Your local IP: ' + await getLocalIp())
+    logger.debug(`Checking for IP change every ${seconds} seconds`, 'debug')
 
     await lookForIpChange()
     setInterval(async() => await lookForIpChange(),  seconds * 1000)
@@ -62,10 +62,14 @@ async function promptSeconds() {
 
     let seconds = parseInt((await prompt.get(options)).seconds as any)
     if(isNaN(seconds) || seconds < 1) {
-        logger.error('Invalid seconds provided')
+        logger.error('Invalid seconds provided', 'none')
         await promptSeconds()
     }
     return seconds
 }
 
 main()
+
+
+// Typings
+export type VerbosityLevel = 'none' | 'errors' | 'default' | 'detailed' | 'debug'

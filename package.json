@@ -4,7 +4,8 @@
   "description": "Are you hosting a homeserver? Are you worried about dynamic IPs? Well, you don't have to worry anymore!\r (WIP)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc; node ./dist"
   },
   "repository": {
     "type": "git",

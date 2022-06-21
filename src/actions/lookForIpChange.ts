@@ -4,12 +4,12 @@ import { default as getLocalIp } from '../actions/getLocalIp.js'
 import { default as changeIp } from '../actions/changeIp.js'
 
 export default async() => {
-    logger.info('Checking for an IP change...')
+    logger.debug('Checking for an IP change...', 'detailed')
     const ip = await getLocalIp()
     if (await getIp(process.env.ZONE!) !== ip) {
-        logger.info('IP changed. Updating Cloudflare...')
+        logger.debug('IP changed. Updating Cloudflare...', 'default')
         await changeIp(process.env.ZONE!, ip)
     } else {
-        logger.info('IP is up to date with Cloudflare')
+        logger.debug('IP is up to date with Cloudflare', 'detailed')
     }
 }

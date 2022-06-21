@@ -11,7 +11,7 @@ Some data needed by the program can be passed through environmental tables (e.g.
 | ZONE            | Your Cloudflare's Zone ID                                                   |
 | DOMAIN          | The domain you want to change the DNS records of                           |
 | SECONDS         | Optional. Interval beetwen IP Checks. A prompt is shown if this is missing |
-
+| VERBOSITY       | Optional. [Verbosity level](#verbosity-levels). Defaults to `default`
 
 ## Compiling and running
 Download the source code, then open your preferred terminal on the source code's folder, then run
@@ -21,10 +21,15 @@ npm install
 
 Once completed, run
 ```bash
-npx tsc
+npm run start
 ```
-to compile, and
-```bash
-node ./dist
-```
-to run the program
+to compile and run the program
+
+## Verbosity levels
+| Verbosity level | Description                                  |
+|-----------------|----------------------------------------------|
+| `none`          | Initialization and critical errors only      |
+| `errors`        | Non-critical errors and warnings added       |
+| `default`       | IP changes and updates added (default value) |
+| `detailed`      | All IP checks added                          |
+| `debug`         | Miscellaneous debugging information added    |

@@ -23,7 +23,10 @@ async function main() {
     console.log(`${ascii}
                                         Cloudflare IP Updater
     `)
-    if(!process.env.VERBOSITY || !verbosityLevels.includes(process.env.VERBOSITY)) throw new TypeError(`Verbosity must be one of: ${verbosityLevels.join(', ')}`)
+    if(!process.env.VERBOSITY || !verbosityLevels.includes(process.env.VERBOSITY)) {
+        process.env.VERBOSITY = 'default'
+        logger.info('Verbosity level invalid or missing, defaulting to "default"', 'default')
+    }
     logger.info('Application Initialized', 'none')
     if(!process.env.CFAPI) throw new TypeError('API Key must be provided')
     logger.debug('API Key loaded successfully', 'none')

@@ -2,17 +2,17 @@ import * as Cloudflare from 'cloudflare'
 import * as dotenv from 'dotenv'
 import * as prompt from 'prompt'
 import * as fs from 'fs'
-dotenv.config()
+dotenv.config({ path: process.cwd() + '/.env' })
 
 import * as logger from './utils/logger.js'
 import { default as getIp } from './actions/getIp.js'
 import { default as getLocalIp } from './actions/getLocalIp.js'
 import { default as lookForIpChange } from './actions/lookForIpChange.js'
 
-//@ts-expect-error
+// @ts-expect-error
 export const cf = Cloudflare({
     email: process.env.CFMAIL,
-    key: process.env.CFAPIKEY
+    key: process.env.CFAPI
 })
 
 async function main() {

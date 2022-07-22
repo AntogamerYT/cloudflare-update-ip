@@ -23,7 +23,7 @@ export default async(zone: string, ip: string) => {
             },
             headers: {
                 'X-Auth-Email': process.env.CFMAIL!,
-                'X-Auth-Key': process.env.CFAPIKEY!,
+                'X-Auth-Key': process.env.CFAPI!,
                 'Content-type': 'application/json',
             },
         })

@@ -22,7 +22,7 @@ export default async(zone: string, ip: string) => {
                 proxied: (await getOtherData(process.env.ZONE!)).proxied,
             },
             headers: {
-                'X-Auth-Email': process.env.CFMAIl!,
+                'X-Auth-Email': process.env.CFMAIL!,
                 'X-Auth-Key': process.env.CFAPIKEY!,
                 'Content-type': 'application/json',
             },

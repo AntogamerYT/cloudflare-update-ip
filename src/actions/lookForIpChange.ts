@@ -6,6 +6,12 @@ import { default as changeIp } from '../actions/changeIp.js'
 export default async() => {
     logger.debug('Checking for an IP change...', 'detailed')
     const ip = await getLocalIp()
+
+    if (ip === 'fail') {
+        logger.error('Failed getting local IP. Make sure you have internet connection', 'errors')
+        return
+    }
+    
     const zoneIp = await getIp(process.env.ZONE!)
     if (zoneIp === 'fail') {
         logger.error("Failed getting CloudGlare IP. Make sure you have internet connection and the zone ID is correct", 'errors')

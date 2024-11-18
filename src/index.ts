@@ -1,4 +1,4 @@
-import * as Cloudflare from 'cloudflare'
+import Cloudflare from 'cloudflare'
 import * as dotenv from 'dotenv'
 import * as prompt from 'prompt'
 import * as fs from 'fs'

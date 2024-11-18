@@ -1,30 +1,31 @@
-import * as chalk from 'chalk'
+import pkg from 'chalk'
+const { yellow, red, green, blue, gray } = pkg;
 import { verbosityLevels, type VerbosityLevel } from '../index.js'
 
 
 export const warning = (text: string, level: VerbosityLevel) => {
     if(!checkVerb(level)) return
-    console.log(chalk.yellow(`[!] ${text}`))
+    console.log(yellow(`[!] ${text}`))
 }
 
 export const error = (text: string, level: VerbosityLevel) => {
     if(!checkVerb(level)) return
-    console.log(chalk.red(`[!] ${text}`))
+    console.log(red(`[!] ${text}`))
 }
 
 export const success = (text: string, level: VerbosityLevel) => {
     if(!checkVerb(level)) return
-    console.log(chalk.green(`[✓] ${text}`))
+    console.log(green(`[✓] ${text}`))
 }
 
 export const info = (text: string, level: VerbosityLevel) => {
     if(!checkVerb(level)) return
-    console.log(chalk.blue(`[i] ${text}`))
+    console.log(blue(`[i] ${text}`))
 }
 
 export const debug = (text: string, level: VerbosityLevel) => {
     if(!checkVerb(level)) return
-    console.log(chalk.gray(`[i] ${text}`))
+    console.log(gray(`[i] ${text}`))
 }
 
 const checkVerb = (level: VerbosityLevel) => {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Are you hosting a homeserver? Are you worried about dynamic IPs? Well, you don't have to worry anymore!\r (WIP)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx tsc && node ./dist"

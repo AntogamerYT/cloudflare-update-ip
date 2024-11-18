@@ -14,7 +14,7 @@ export default async() => {
     
     const zoneIp = await getIp(process.env.ZONE!)
     if (zoneIp === 'fail') {
-        logger.error("Failed getting CloudGlare IP. Make sure you have internet connection and the zone ID is correct", 'errors')
+        logger.error("Failed getting CloudFlare IP. Make sure you have internet connection and the zone ID is correct", 'errors')
     } else if (zoneIp !== ip) {
         logger.debug('IP changed. Updating Cloudflare...', 'default')
         await changeIp(process.env.ZONE!, ip)

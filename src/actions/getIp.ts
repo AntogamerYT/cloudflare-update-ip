@@ -10,7 +10,9 @@ export default async(zone: string) => {
         ip = dnsRecords.result.filter((record: any) => record.name === process.env.DOMAIN)[0].content
     } catch (error) {
         logger.debug(`Failed getting Cloudfare IP.`, 'debug')
-        throw new Error('Error while getting IP from Cloudflare! Make sure you typed the correct zone ID in your env file!')
+        // We are doing this because if there is no internet connection it will just throw an error and crash the program
+        return "fail"
+        //throw new Error('Error while getting IP from Cloudflare! Make sure you typed the correct zone ID in your env file!')
     }
     logger.debug(`Got Cloudflare IP: ${ip}`, 'debug')
     return ip
